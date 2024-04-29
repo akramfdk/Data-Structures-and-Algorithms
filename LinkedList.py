@@ -5,8 +5,12 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self):
-        self.head = None
+    def __init__(self, value):
+        node = Node(value)
+
+        self.head = node
+        self.tail = node
+        self.length = 1
 
     def prepend(self, value):
         temp = Node(value)
@@ -16,25 +20,22 @@ class LinkedList:
 
     def append(self, value):
         temp = Node(value)
-        
         if not self.head:
             self.head = temp
+            self.tail = temp
+            self.length = 1
 
         else:
-            current = self.head
-            while current.next:
-                current = current.next
-            
-            current.next = temp
+            self.tail.next = temp
+            self.tail = temp
 
-    def display(self):
+
+    def print_list(self):
         current = self.head
 
         while current:
-            print(current.value, end = " ")
+            print(current.value)
             current = current.next
-
-        print()
 
     def remove(self, value):
         pass
@@ -44,16 +45,12 @@ class LinkedList:
 
 
 
-numbers = LinkedList()
+numbers = LinkedList(34)
 
-numbers.prepend(11)
-numbers.prepend(22)
-numbers.append(34)
 numbers.append(5)
 numbers.append(12)
-numbers.prepend(33)
 numbers.append(73)
 numbers.append(98)
 
 
-numbers.display()
+numbers.print_list()
