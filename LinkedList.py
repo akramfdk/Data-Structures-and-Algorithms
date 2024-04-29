@@ -34,23 +34,43 @@ class LinkedList:
         current = self.head
 
         while current:
-            print(current.value)
+            print(current.value, end = " ")
             current = current.next
+
+        print()
 
     def remove(self, value):
         pass
 
     def pop(self):
-        pass
+        temp = self.head
+        cur = self.head
+
+        if not self.head:
+            return None
+        elif not self.head.next:
+            
+            self.head = None
+            self.tail = None
+        else:
+            while(cur.next.next):
+                cur = cur.next
+
+            temp = cur.next
+            self.tail = cur
+            self.tail.next = None
+
+
+        self.length -= 1
+        return temp
 
 
 
 numbers = LinkedList(34)
 
 numbers.append(5)
-numbers.append(12)
-numbers.append(73)
-numbers.append(98)
-
-
 numbers.print_list()
+
+print(numbers.pop())
+print(numbers.pop())
+print(numbers.pop())
