@@ -9,7 +9,10 @@ class LinkedList:
         self.head = None
 
     def prepend(self, value):
-        pass
+        temp = Node(value)
+
+        temp.next = self.head
+        self.head = temp
 
     def append(self, value):
         temp = Node(value)
@@ -42,9 +45,13 @@ class LinkedList:
 
 
 numbers = LinkedList()
+
+numbers.prepend(11)
+numbers.prepend(22)
 numbers.append(34)
 numbers.append(5)
 numbers.append(12)
+numbers.prepend(33)
 numbers.append(73)
 numbers.append(98)
 
