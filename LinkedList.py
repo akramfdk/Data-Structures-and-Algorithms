@@ -13,10 +13,16 @@ class LinkedList:
         self.length = 1
 
     def prepend(self, value):
-        temp = Node(value)
+        
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
 
-        temp.next = self.head
-        self.head = temp
+        self.length += 1
 
     def append(self, value):
         temp = Node(value)
@@ -28,6 +34,8 @@ class LinkedList:
         else:
             self.tail.next = temp
             self.tail = temp
+        
+        self.length += 1
 
 
     def print_list(self):
@@ -63,14 +71,37 @@ class LinkedList:
 
         self.length -= 1
         return temp
+    
+    def get(self, index):
+        if index >=0 and index < self.length:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp
+        else:
+            return None
+        
+    def set(self, index, value):
+        if index >= 0 and index < self.length:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            
+            temp.value = value
 
 
 
 numbers = LinkedList(34)
-
+numbers.pop()
+numbers.prepend(72)
+numbers.append(3)
+numbers.prepend(11)
 numbers.append(5)
+numbers.append(69)
+numbers.append(14)
+numbers.pop()
 numbers.print_list()
-
-print(numbers.pop())
-print(numbers.pop())
-print(numbers.pop())
+print(numbers.get(2).value)
+numbers.set(2, 101)
+print(numbers.get(2).value)
+numbers.print_list()
