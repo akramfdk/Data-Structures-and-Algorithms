@@ -136,58 +136,38 @@ class LinkedList:
         self.length -= 1
         return curr
     
+    def reverse(self):
+        before = None
+        curr = self.head
+        after = self.head
+
+        # first swap the head and tail
+        self.head = self.tail
+        self.tail = curr
+
+        # now reverse the links
+        while curr:
+            after = after.next
+            curr.next = before
+            before = curr
+            curr = after
 
 ll = LinkedList()
+ll.print_list()
+
+ll.reverse()
+ll.print_list()
 
 ll.append(5)
+ll.print_list()
+
+ll.reverse()
+ll.print_list()
+
 ll.append(3)
 ll.append(8)
 ll.print_list()
 
-
-# print(ll.remove(-1))
-# ll.print_list()
-
-# print(ll.remove(3))
-# ll.print_list()
-
-# print(ll.remove(2).value)
-# ll.print_list()
-
-# print(ll.remove(1).value)
-# ll.print_list()
-
-# print(ll.remove(0).value)
-# ll.print_list()
-
-# print(ll.remove(0))
-# ll.print_list()
-
-# print(ll.insert(-1, 1))
-# ll.print_list()
-
-# print(ll.insert(4, 1))
-# ll.print_list()
-
-# print(ll.insert(3, 1))
-# ll.print_list()
-
-# print(ll.insert(0, 7))
-# ll.print_list()
-
-# print(ll.insert(2, 11))
-# ll.print_list()
-
-# print(ll.set_value(-1, 3))
-# print(ll.set_value(3, 2))
-# print(ll.set_value(0, 1))
-
-# ll.print_list()
-
-# print(ll.get(-1))
-# print(ll.get(3))
-# print(ll.get(0).value)
-# print(ll.get(1).value)
-# print(ll.get(2).value)
-
+ll.reverse()
+ll.print_list()
 
